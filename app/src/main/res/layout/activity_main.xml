@@ -10,24 +10,48 @@
         android:id="@+id/btn_reset"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="重置Icon"
         android:onClick="resetChange"
-        app:layout_constraintVertical_chainStyle="packed"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:text="重置Icon"
         app:layout_constraintBottom_toTopOf="@id/btn_switch"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="packed" />
 
     <Button
         android:id="@+id/btn_switch"
-        app:layout_constraintTop_toBottomOf="@id/btn_reset"
         android:layout_width="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
         android:layout_height="wrap_content"
-        app:layout_constraintVertical_chainStyle="packed"
-        android:text="切换Icon"
         android:onClick="iconChange"
+        android:text="切换Icon"
+        app:layout_constraintBottom_toTopOf="@id/btn_reset_kill"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btn_reset"
+        app:layout_constraintVertical_chainStyle="packed" />
+
+    <Button
+        android:id="@+id/btn_reset_kill"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="resetChangeKill"
+        android:text="重置Icon并kill app"
+        app:layout_constraintBottom_toTopOf="@id/btn_switch_kill"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btn_switch"
+        app:layout_constraintVertical_chainStyle="packed" />
+
+    <Button
+        android:id="@+id/btn_switch_kill"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="iconChangeKill"
+        android:text="切换Icon并kill app"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btn_reset_kill"
+        app:layout_constraintVertical_chainStyle="packed" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

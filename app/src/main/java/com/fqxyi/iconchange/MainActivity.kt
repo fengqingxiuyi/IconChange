@@ -11,10 +11,18 @@ class MainActivity : AppCompatActivity() {
   }
 
   fun resetChange(view: View) {
-    IconChangeManager.changeIcon(this, 0)
+    IconChangeManager.changeIcon(this, 0, false)
   }
 
   fun iconChange(view: View) {
-    IconChangeManager.changeIcon(this, 1)
+    IconChangeManager.changeIcon(this, 1, false)
+  }
+
+  fun resetChangeKill(view: View) {
+    IconChangeManager.changeIcon(this, 0, true)
+  }
+
+  fun iconChangeKill(view: View) {
+    IconChangeManager.changeIcon(this, 1, true)
   }
 }

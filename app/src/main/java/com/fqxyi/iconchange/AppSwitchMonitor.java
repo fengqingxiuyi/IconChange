@@ -7,7 +7,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-public class AppSwitchMoitor implements Application.ActivityLifecycleCallbacks {
+public class AppSwitchMonitor implements Application.ActivityLifecycleCallbacks {
   //计数器
   private int count = 0;
 
@@ -37,7 +37,7 @@ public class AppSwitchMoitor implements Application.ActivityLifecycleCallbacks {
   public void onActivityStopped(@NonNull Activity activity) {
     count--;
     if (count == 0) { //前台切换到后台
-      IconChangeManager.changeIcon(activity, 1);
+      IconChangeManager.changeIcon(activity, 1, true);
     }
   }
 

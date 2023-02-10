@@ -49,18 +49,18 @@ public class IconChangeManager {
     /**
      * 更换应用icon
      */
-    public static void changeIcon(Context context, int iconType) {
+    public static void changeIcon(Context context, int iconType, boolean kill) {
         if (context == null) {
             return;
         }
         if (iconType == 0) { // 不更新icon，需要重置为默认icon
             String activityPath = ACTIVITY_PATH_ARR[0];
             if (!componentEnabled(context, activityPath)) {
-                enableComponent(context, activityPath);
+                enableComponent(context, activityPath, kill);
             }
             return;
         }
-        enableComponent(context, getActivityPath(iconType));
+        enableComponent(context, getActivityPath(iconType), kill);
     }
 
     /**
@@ -98,7 +98,7 @@ public class IconChangeManager {
     /**
      * 启用组件
      */
-    public static void enableComponent(Context context, String activityPath) {
+    public static void enableComponent(Context context, String activityPath, boolean kill) {
         if (context == null || TextUtils.isEmpty(activityPath)) {
             return;
         }
@@ -116,10 +116,14 @@ public class IconChangeManager {
                         new ComponentName(context, context.getPackageName() + item),
                         PackageManager.COMPONENT_ENABLED_STATE_DISABLED, PackageManager.DONT_KILL_APP);
             }
+            int flags = 0; // 0表示立刻杀死应用，并刷新ICON
+            if (!kill) {
+                flags = PackageManager.DONT_KILL_APP;
+            }
             // 再启用需要启用的组件
             packageManager.setComponentEnabledSetting(
                     new ComponentName(context, context.getPackageName() + activityPath),
-                    PackageManager.COMPONENT_ENABLED_STATE_ENABLED, 0); // 0表示立刻杀死应用，并刷新ICON
+                    PackageManager.COMPONENT_ENABLED_STATE_ENABLED, flags);
         } catch (Exception e) {
             e.printStackTrace();
         }
