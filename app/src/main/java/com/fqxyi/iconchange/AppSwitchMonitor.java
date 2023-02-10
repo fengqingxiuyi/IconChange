@@ -3,11 +3,13 @@ package com.fqxyi.iconchange;
 import android.app.Activity;
 import android.app.Application;
 import android.os.Bundle;
+import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 public class AppSwitchMonitor implements Application.ActivityLifecycleCallbacks {
+  private static final String TAG = "AppSwitchMonitor";
   //计数器
   private int count = 0;
 
@@ -37,7 +39,8 @@ public class AppSwitchMonitor implements Application.ActivityLifecycleCallbacks 
   public void onActivityStopped(@NonNull Activity activity) {
     count--;
     if (count == 0) { //前台切换到后台
-      IconChangeManager.changeIcon(activity, 1, true);
+      Log.d(TAG, "从前台切换到后台了");
+      IconChangeManager.changeIcon(activity, 1, false);
     }
   }
 

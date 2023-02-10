@@ -12,14 +12,14 @@ class SplashActivity : AppCompatActivity() {
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
     setContentView(R.layout.activity_splash)
-//    application.registerActivityLifecycleCallbacks(monitor)
+    application.registerActivityLifecycleCallbacks(monitor)
     Handler().postDelayed({
       startActivity(Intent(this, MainActivity::class.java))
-    }, 1000)
+    }, 2000)
   }
 
   override fun onDestroy() {
     super.onDestroy()
-//    application.unregisterActivityLifecycleCallbacks(monitor)
+    application.unregisterActivityLifecycleCallbacks(monitor)
   }
 }
