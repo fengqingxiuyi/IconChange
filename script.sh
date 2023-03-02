@@ -1,5 +1,5 @@
 #!/bin/sh
 
-git add .
-git commit -m "@feat 更新版本号"
+git add aa.kt
+git commit -m "@tmp test"
 git push
